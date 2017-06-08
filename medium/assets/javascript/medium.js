@@ -42,7 +42,60 @@
   //code in here wont run until page loads
   $(function(){
 
+    var teamoneButton = document.querySelector("#teamone-shoot");
+    var teamtwoButton = document.querySelector("#teamtwo-shoot");
+    var resetCounter = document.querySelector("#num-resets");
+    var resetButton = document.querySelector("#reset");
+    var teamoneShots = document.querySelector("#teamone-numshots");
+    var teamoneGoals = document.querySelector("#teamone-numhits");
+    var teamtwoShots = document.querySelector("#teamtwo-numshots");
+    var teamtwoGoals = document.querySelector("#teamtwo-numhits");
 
+
+    teamoneButton.addEventListener("click", function(){
+        console.log("shoot1 button clicked");
+
+
+        var shotsTakenOne = parseInt(teamoneShots.innerHTML)+1;
+        teamoneShots.innerHTML = shotsTakenOne;
+
+        var increaseGoalOne = parseInt(teamoneGoals.innerHTML)+1;
+        var randomNumber = Math.random();
+            console.log(randomNumber);
+        if (randomNumber <= 0.5) {
+            teamoneGoals.innerHTML = increaseGoalOne;
+            document.body.style.backgroundColor = "blue";
+        }
+
+    })
+
+    teamtwoButton.addEventListener("click", function(){
+        console.log("shoot2 button clicked");
+
+        var shotsTakenTwo = parseInt(teamtwoShots.innerHTML)+1;
+        teamtwoShots.innerHTML = shotsTakenTwo;
+
+        var increaseGoalTwo = parseInt(teamtwoGoals.innerHTML)+1;
+        var randomNumber = Math.random();
+            console.log(randomNumber);
+        if (randomNumber <= 0.5) {
+            teamtwoGoals.innerHTML = increaseGoalTwo;
+            document.body.style.backgroundColor = "red";
+        }
+    })
+
+    resetButton.addEventListener("click", function(){
+        console.log("I say, I say! Did some just reset?!");
+        document.body.style.backgroundColor = "white";
+
+        var clearAll = parseInt(resetCounter.innerHTML)+1;
+                    resetCounter.innerHTML = clearAll;
+                    teamtwoShots.innerHTML = 0;
+                    teamtwoGoals.innerHTML = 0;
+                    teamoneShots.innerHTML = 0;
+                    teamoneGoals.innerHTML = 0;
+
+    })
 
   })
 

@@ -12,18 +12,18 @@
  * https://api.jquery.com/remove/
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
  *
- * 1. Any time someone clicks on the title at the top "feed template,"
+ * SORTA DONE - 1. Any time someone clicks on the title at the top "feed template,"
  *    make the color of the "feed template" text change from black to red
  *    and then from red to black when clicked again.
  *
- * 2. The links on the side of the page – "your name," "section 1," "section 2," etc. –
+ * DONE - 2. The links on the side of the page – "your name," "section 1," "section 2," etc. –
  *    hide every odd-numbered link in the menu.
  *
- * 3. Change every instance of the word "bacon" on the page to be "LASER VISION"
+ * DONE - 3. Change every instance of the word "bacon" on the page to be "LASER VISION"
  *
- * 4. Delete the last two posts in the middle section (they have a CSS class "post"
+ * DONE - 4. Delete the last two posts in the middle section (they have a CSS class "post"
  *
- * 5. Remove the images in the right column
+ * DONE - 5. Remove the images in the right column
  *
  * BONUS: add a special surprise inside!
  *
@@ -35,6 +35,30 @@
    //code in here wont run until page loads
    $(function(){
 
+
+      $('h1').click(function() {
+                      if($(this).css('color') == 'rgb(51, 51, 51)') {
+                            $(this).css('color', 'rgb(255, 0, 0)');
+                      }
+                     else {
+                           $(this).css('color', 'rgb(51, 51, 51)');
+                      }
+       });
+
+
+//I cannot figure out how to make .filter target 1, 3, and 5 in the same line.  Any ideas?
+//the below code gets the job done, but is likely not the most efficient way to achieve the desired result
+      $('h5').filter(":contains('1')").remove();
+      $('h5').filter(":contains('3')").remove();
+      $('h5').filter(":contains('5')").remove();
+
+
+      $("body").html($("body").html().replace(/Bacon/g,'LASER VISION'));
+
+
+      $("div.large-6.columns").find("div.row.post").slice(4).remove()
+
+      $("aside.large-3.columns.hide-for-small").remove();
 
 
    })
